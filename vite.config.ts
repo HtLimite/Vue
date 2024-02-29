@@ -19,12 +19,25 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+       resolvers: [
+           //配置elementPlus采用sass样式配置系统
+           ElementPlusResolver({importStyle: "sass"}),
+       ]
     }),
   ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  //自动导入定制化样式文件进样式覆盖
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+        @use "@/styles/element/index.scss" as *;
+        `,
+      },
+    },
+  },
 })
