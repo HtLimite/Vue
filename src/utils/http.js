@@ -1,11 +1,10 @@
 import axios from 'axios'
 
-//封装axios
-const httpInstance = axios.create({
-    baseURL: 'https://some-domain.com/api/',
-    timeout: 5000,
-    headers: {'X-Custom-Header': 'foobar'}
-});
+// 创建axios实例
+export const httpInstance = axios.create({
+    baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
+    timeout: 5000
+})
 
 // 添加请求拦截器
 httpInstance.interceptors.request.use(function (config) {
