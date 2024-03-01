@@ -16,10 +16,10 @@ import HomePanel from '@/views/Home/components/HomePanel.vue'
   <HomeHot />
   <homeProduct />
 <!-- 测试面板组件  有插槽成对出现-->
-  <homePanel title="新鲜好物" subTitle="新鲜好物">
+  <homePanel title="新鲜好物" sub-title="新鲜好物">
 <div>我是新鲜好物的插槽</div>
   </homePanel>
-  <homePanel title="人气推荐" subTitle="人气推荐">
+  <homePanel title="人气推荐" sub-title="人气推荐">
 <div>我是人气推荐的插槽</div>
   </homePanel>
 </template>

@@ -1,5 +1,5 @@
 
-import {httpInstance} from '@/utils/http.js'
+import {httpInstance} from '@/utils/http'
 
 export function getCategoryAPI () {
     return httpInstance({

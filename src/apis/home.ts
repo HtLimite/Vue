@@ -7,5 +7,18 @@ function getBannerAPI(){
   })
 }
 
+//新鲜好物接口
+function findNewAPI(){
+  return httpInstance({
+    url: '/home/new'
+  })
+}
+//人气推荐接口
+function findHotAPI(){
+  return httpInstance({
+    url: '/home/hot'
+  })
+}
 
-export {getBannerAPI}
+
+export {getBannerAPI ,findNewAPI,findHotAPI}
