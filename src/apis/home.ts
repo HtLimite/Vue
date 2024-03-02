@@ -20,5 +20,13 @@ function findHotAPI(){
   })
 }
 
+//产品列表接口
+function getGoodsAPI(){
+  return httpInstance({
+    url: 'home/goods'
+  })
+}
 
-export {getBannerAPI ,findNewAPI,findHotAPI}
+
+
+export {getBannerAPI ,findNewAPI,findHotAPI, getGoodsAPI}
