@@ -2,6 +2,7 @@
 import { getDetailAPI } from '@/apis/detail'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import DetailHot from '@/views/Detail/components/DetailHot.vue'
 
 const goods = ref({})
 const route = useRoute()
@@ -18,11 +19,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="xtx-goods-page" >
+  <div class="xtx-goods-page">
     <div class="container" v-if="goods.details">
-      <div class="bread-container" >
+      <div class="bread-container">
         <el-breadcrumb separator=">">
-          <!--          ?. 可选链 有字段才渲染-->
+          <!--          ?.   1.可选链 有字段才渲染-->
+          <!--          v-if 2.有字段才渲染-->
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item :to="{ path: `/category/${goods.categories?.[1].id}` }">
             {{ goods.categories?.[1].name }}
@@ -49,12 +51,12 @@ onMounted(() => {
                 </li>
                 <li>
                   <p>商品评价</p>
-                  <p>{{goods.commentCount}}</p>
+                  <p>{{ goods.commentCount }}</p>
                   <p><i class="iconfont icon-comment-filling"></i>查看评价</p>
                 </li>
                 <li>
                   <p>收藏人气</p>
-                  <p>{{goods.collectCount}}</p>
+                  <p>{{ goods.collectCount }}</p>
                   <p><i class="iconfont icon-favorite-filling"></i>收藏商品</p>
                 </li>
                 <li>
@@ -66,8 +68,8 @@ onMounted(() => {
             </div>
             <div class="spec">
               <!-- 商品信息区 -->
-              <p class="g-name">{{goods.name}}</p>
-              <p class="g-desc">{{goods.desc}} </p>
+              <p class="g-name">{{ goods.name }}</p>
+              <p class="g-desc">{{ goods.desc }} </p>
               <p class="g-price">
                 <span>{{ goods.price }}</span>
                 <span> {{ goods.oldPrice }}</span>
@@ -122,7 +124,10 @@ onMounted(() => {
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
-
+              <!--              24小时-->
+              <DetailHot />
+              <!--              周-->
+              <DetailHot />
             </div>
           </div>
         </div>
