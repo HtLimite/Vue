@@ -3,13 +3,13 @@ import LayoutNav from './components/LayoutNav.vue'
 import LayoutHeader from './components/LayoutHeader.vue'
 import LayoutFooter from './components/LayoutFooter.vue'
 import LayoutFixed from './components/LayoutFixed.vue'
-import {onMounted} from 'vue'
+import { onMounted } from 'vue'
 
-import {useCategoryStore} from '@/stores/category.ts'
+import { useCategoryStore } from '@/stores/category.ts'
 //触发获取导航列表数据函数
 const categoryStore = useCategoryStore()
 
-onMounted(()=>{
+onMounted(() => {
   //调用接口
   categoryStore.getCategory()
 })
@@ -21,7 +21,9 @@ onMounted(()=>{
   <LayoutFixed />
   <LayoutNav />
   <LayoutHeader />
-<!--  二级路由-->
+  <!--  二级路由 添加key 破坏复用机制-->
+  <!--  <RouterView :key="$route.fullPath" />-->
+<!--  方案二 钩子函数 onBeforeRouteUpdate-->
   <RouterView />
   <LayoutFooter />
 </template>
