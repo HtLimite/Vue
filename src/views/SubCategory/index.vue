@@ -12,7 +12,6 @@ const getCategoryData = async () => {
   const res = await getCategoryFilterAPI(route.params.id)
   categoryData.value = res.data.result
 }
-
 onMounted(() => {
   getCategoryData()
 })
@@ -27,8 +26,6 @@ const reqData = ref({
   sortField: 'publishTime'
 })
 const disabled = ref(false)
-
-
 const getGoodList = async () => {
   const res = await getSubCategoryAPI(reqData.value)
   goodList.value = res.data.result.items
@@ -39,21 +36,21 @@ onMounted(() => {
 })
 
 //tab切换回调
-const tabChange = ()=>{
+const tabChange = () => {
   reqData.value.pageSize = 1
   getGoodList()
 }
 
 //加载更多
-const load = async ()=>{
+const load = async () => {
   //获取下一页数据
   reqData.value.page++
   const res = await getSubCategoryAPI(reqData.value)
   //拼接新数据
-  goodList.value = [...goodList.value,...res.data.result.items]
+  goodList.value = [...goodList.value, ...res.data.result.items]
 
   //加载完毕 停止监听
-  if(res.data.result.items.length === 0){
+  if (res.data.result.items.length === 0) {
     disabled.value = true
   }
 

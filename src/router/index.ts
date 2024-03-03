@@ -5,6 +5,7 @@ import Layout from '@/views/Layout/index.vue'
 import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
 import SubCategory from '@/views/SubCategory/index.vue'
+import Detail from '@/views/Detail/index.vue'
 
 
 const router = createRouter({
@@ -28,6 +29,11 @@ const router = createRouter({
         {
           path: 'category/sub/:id',
           component: SubCategory
+        },
+        //详情页
+        {
+          path: 'detail/:id',
+          component: Detail
         }
       ]
     },
@@ -43,7 +49,13 @@ const router = createRouter({
     //   // which is lazy-loaded when the route is visited.
     //   component: () => import('../views/AboutView.vue')
     // }
-  ]
+  ],
+  //路由行为定制
+  scrollBehavior(){
+    return {
+      top: 0
+    }
+  }
 })
 
 export default router
