@@ -5,7 +5,8 @@ import { ref } from 'vue'
 // 1.准备表单对象
 const form = ref({
   account: '',
-  password: ''
+  password: '',
+  agree: false
 })
 // 2.准备规则对象
 const rules = ref({
@@ -14,8 +15,19 @@ const rules = ref({
     { required: true, message: '用户名不能为空', trigger: 'blur' }
   ],
   password: [
-    { required: true, message:'密码不能为空', trigger: 'blur' },
-    { min: 6, max: 14, message: '密码不规范',trigger: 'blur' },
+    { required: true, message: '密码不能为空', trigger: 'blur' },
+    { min: 6, max: 14, message: '密码不规范', trigger: 'blur' }
+  ],
+  agree: [
+    {
+      validator: (rule, value, callback) => {
+        // console.log(value)
+        // 自定义校验逻辑  勾选通过
+        if (value) callback()
+        else callback(new Error('请同意隐私条款和服务条款'))
+      }
+
+    }
   ]
 })
 // 3.
@@ -49,13 +61,13 @@ const rules = ref({
               <el-form-item prop="account" label="账户">
                 <el-input v-model="form.account" />
               </el-form-item>
-              //规则字段 prop: password == rules.password
+              <!--              规则字段 prop: password == rules.password-->
               <el-form-item prop="password" label="密码">
-                //双向绑定 表单字段
+                <!--                双向绑定 表单字段-->
                 <el-input v-model="form.password" />
               </el-form-item>
-              <el-form-item label-width="22px">
-                <el-checkbox size="large">
+              <el-form-item prop="agree" label-width="22px">
+                <el-checkbox v-model="form.agree" size="large">
                   我已同意隐私条款和服务条款
                 </el-checkbox>
               </el-form-item>
