@@ -1,18 +1,20 @@
 <script setup>
 import { ref } from 'vue'
-import { LoginAPI } from '@/apis/user'
 // elementPLUS 消息提示插件
 import 'element-plus/es/components/message/style/css'
 import { ElMessage } from 'element-plus'
 //路由跳转
 import {useRouter} from 'vue-router'
+//导入pinia
+import {useUserStore} from '@/stores/user'
 
+const userStore = useUserStore()
 
 //表单校验
 // 1.准备表单对象
 const form = ref({
-  account: '',
-  password: '',
+  account: 'heima293',
+  password: 'hm#qd@23!',
   agree: false
 })
 // 2.准备规则对象
@@ -50,7 +52,7 @@ const doLogin = () => {
     //   valid: 都通过校验 才为true
     if (valid) {
       // TODO LOGIN
-      const res = await LoginAPI({ account, password })
+      await userStore.getUserInfo({ account, password })
       //1.提示用户
       ElMessage({
         message: '登录成功！',
