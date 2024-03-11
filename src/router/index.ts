@@ -37,6 +37,7 @@ const router = createRouter({
         }
       ]
     },
+    //登录页
     {
       path: '/login',
       component: Login

@@ -10,7 +10,7 @@ import { useCategoryStore } from '@/stores/category.ts'
 const categoryStore = useCategoryStore()
 
 onMounted(() => {
-  //调用接口
+  //调用接口 一次 子组件再访问数据不需要再调用接口
   categoryStore.getCategory()
 })
 

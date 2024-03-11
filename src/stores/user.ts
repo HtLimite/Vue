@@ -11,14 +11,19 @@ export const useUserStore = defineStore('user', () => {
       const res = await loginAPI({ account, password })
       userInfo.value = res.data.result
     }
+    //清除数据
+    const clearUserInfo = () => {
+      userInfo.value = {}
+    }
     //3.以对象的格式返回
-
     return {
       userInfo,
-      getUserInfo
+      getUserInfo,
+      clearUserInfo
     }
   }, {
     //数据持久化插件
+    //true ： pinia 内存数据 与 本地缓存 （执行相同操作（存储/清除）） 保持同步
     persist: true
   }
 )
