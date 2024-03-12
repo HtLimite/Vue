@@ -5,7 +5,7 @@ import LayoutFooter from './components/LayoutFooter.vue'
 import LayoutFixed from './components/LayoutFixed.vue'
 import { onMounted } from 'vue'
 
-import { useCategoryStore } from '@/stores/category.ts'
+import { useCategoryStore } from '@/stores/categoryStore.ts'
 //触发获取导航列表数据函数
 const categoryStore = useCategoryStore()
 

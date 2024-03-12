@@ -1,3 +1,4 @@
+//pinia 示例 Store
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 

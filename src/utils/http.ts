@@ -3,7 +3,7 @@ import axios from 'axios'
 import 'element-plus/es/components/message/style/css'
 import { ElMessage } from 'element-plus'
 //pinia获取token
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/userStore.js'
 import router from '@/router/index'
 // 创建axios实例
 export const httpInstance = axios.create({

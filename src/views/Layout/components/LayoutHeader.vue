@@ -1,5 +1,5 @@
 <script setup>
-import { useCategoryStore } from '@/stores/category.ts'
+import { useCategoryStore } from '@/stores/categoryStore.ts'
 import HeadCart from '@/views/Layout/components/HeadCart.vue'
 
 //获得pinia实例对象

@@ -6,7 +6,7 @@ import { ElMessage } from 'element-plus'
 //路由跳转
 import {useRouter} from 'vue-router'
 //导入pinia
-import {useUserStore} from '@/stores/user'
+import {useUserStore} from '@/stores/userStore'
 
 const userStore = useUserStore()
 

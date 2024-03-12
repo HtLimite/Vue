@@ -14,9 +14,20 @@ export const insertCartAPI = ({ skuId, count }) => {
 }
 
 //获取最新购物车列表
-export const findNewCartAPI = ()=>{
+export const findNewCartAPI = () => {
   return httpInstance({
     url: '/member/cart',
     method: 'get'
+  })
+}
+
+//删除购物车
+export const delCartAPI = (ids) => {
+  return httpInstance({
+    url: '/member/cart',
+    method: 'delete',
+    data: {
+      ids
+    }
   })
 }

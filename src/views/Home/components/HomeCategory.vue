@@ -1,6 +1,6 @@
 <script setup>
 //pinia数据渲染
-import {useCategoryStore} from '@/stores/category.ts'
+import {useCategoryStore} from '@/stores/categoryStore.ts'
 
 const categoryStore = useCategoryStore()
 
