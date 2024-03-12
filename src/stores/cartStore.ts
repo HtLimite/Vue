@@ -55,8 +55,10 @@ export const useCartStore = defineStore('cart', () => {
 
 
     }
-
-
+    //清除购物车
+    const clearCart = ()=>{
+      cartList.value = []
+    }
     //计算属性
     //1.计算总数
     // ()=>{} 闭包 return 才返回
@@ -106,6 +108,7 @@ export const useCartStore = defineStore('cart', () => {
       cartList,
       addCart,
       delCart,
+      clearCart,
       allCount,
       isAll,
       allPrice,
