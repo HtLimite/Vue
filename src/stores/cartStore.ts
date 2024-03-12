@@ -30,8 +30,8 @@ export const useCartStore = defineStore('cart', () => {
 
     }
     //计算总数
-    // ()=>{} 闭包 return 才返回
-    // ()=> ... 直接返回
+      // ()=>{} 闭包 return 才返回
+      // ()=> ... 直接返回
     const allCount = computed(() => {
       //a : 每一次计算逻辑完成 返回值
       //c : 遍历时的一个 对象
@@ -42,19 +42,34 @@ export const useCartStore = defineStore('cart', () => {
         , 0)
     })
     //计算总价
-    //不闭包写法
+      //不闭包写法
     const allPrice = computed(() =>
       cartList.value.reduce((a, c) =>
           a + c.count * c.price
         , 0)
     )
+    //是否全选
+    const isAll = computed(()=>
+      cartList.value.every((item)=> item.selected === true ))
+    //单选功能
+    const singleCheck = (skuId, selected)=>{
+      const item = cartList.value.find((item)=> item.skuId === skuId )
+      item.selected = selected
+    }
+    //全选功能
+    const allCheck = (selected)=>{
+      cartList.value.forEach((item)=> item.selected = selected)
+    }
 
     return {
       cartList,
       addCart,
       delCart,
       allCount,
-      allPrice
+      isAll,
+      allPrice,
+      singleCheck,
+      allCheck
     }
   }
   , {
