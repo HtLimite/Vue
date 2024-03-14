@@ -1,16 +1,29 @@
 <script setup>
+import { ref, onMounted } from 'vue'
+import { getUserOrder } from '@/apis/order'
+
 // tab列表
 const tabTypes = [
-  { name: "all", label: "全部订单" },
-  { name: "unpay", label: "待付款" },
-  { name: "deliver", label: "待发货" },
-  { name: "receive", label: "待收货" },
-  { name: "comment", label: "待评价" },
-  { name: "complete", label: "已完成" },
-  { name: "cancel", label: "已取消" }
+  { name: 'all', label: '全部订单' },
+  { name: 'unpay', label: '待付款' },
+  { name: 'deliver', label: '待发货' },
+  { name: 'receive', label: '待收货' },
+  { name: 'comment', label: '待评价' },
+  { name: 'complete', label: '已完成' },
+  { name: 'cancel', label: '已取消' }
 ]
 // 订单列表
-const orderList = []
+const orderList = ref([])
+const params = ref({
+  orderState: 0,
+  page: 1,
+  pageSize:2
+})
+const getOrderList = async ()=>{
+  const res = await getUserOrder(params.value)
+  orderList.value = res.data.result
+}
+onMounted(()=>getOrderList())
 
 </script>
 
@@ -26,14 +39,14 @@ const orderList = []
         </div>
         <div v-else>
           <!-- 订单列表 -->
-          <div class="order-item" v-for="order in orderList" :key="order.id">
+          <div class="order-item" v-for="order in orderList.items" :key="order.id">
             <div class="head">
               <span>下单时间：{{ order.createTime }}</span>
               <span>订单编号：{{ order.id }}</span>
               <!-- 未付款，倒计时时间还有 -->
               <span class="down-time" v-if="order.orderState === 1">
                 <i class="iconfont icon-down-time"></i>
-                <b>付款截止: {{order.countdown}}</b>
+                <b>付款截止: {{ order.countdown }}</b>
               </span>
             </div>
             <div class="body">
@@ -74,8 +87,8 @@ const orderList = []
                 <p>在线支付</p>
               </div>
               <div class="column action">
-                <el-button  v-if="order.orderState === 1" type="primary"
-                            size="small">
+                <el-button v-if="order.orderState === 1" type="primary"
+                           size="small">
                   立即付款
                 </el-button>
                 <el-button v-if="order.orderState === 3" type="primary" size="small">
@@ -171,7 +184,7 @@ const orderList = []
       text-align: center;
       padding: 20px;
 
-      >p {
+      > p {
         padding-top: 10px;
       }
 
