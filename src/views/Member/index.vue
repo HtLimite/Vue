@@ -7,7 +7,7 @@
         <h4>我的账户</h4>
         <div class="links">
           <!--          路由链接，点击跳转路径-->
-          <RouterLink to="/member/user">个人中心</RouterLink>
+          <RouterLink to="/member">个人中心</RouterLink>
         </div>
         <h4>交易管理</h4>
         <div class="links">

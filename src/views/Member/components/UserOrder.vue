@@ -41,6 +41,23 @@ const pageChange = (page)=>{
   params.value.page = page
   getOrderList()
 }
+//订单状态对应
+const fomartPayState = (payState)=>{
+  const stateMap = {
+    1:'待付款',
+    2:'待发货',
+    3:'待收货',
+    4:'待评价',
+    5:'已完成',
+    6:'已取消',
+    // count: 22,
+  }
+  //对象访问方式 1. stateMap['count']/stateMap[1] （数字可不加双引号）
+  //           2. stateMap.count
+  return stateMap[payState]
+}
+
+
 
 </script>
 
@@ -87,7 +104,7 @@ const pageChange = (page)=>{
                 </ul>
               </div>
               <div class="column state">
-                <p>{{ order.orderState }}</p>
+                <p>{{ fomartPayState(order.orderState) }}</p>
                 <p v-if="order.orderState === 3">
                   <a href="javascript:;" class="green">查看物流</a>
                 </p>

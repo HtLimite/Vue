@@ -24,6 +24,7 @@ const router = createRouter({
       // 二级路由
       children: [
         {
+          //默认二级路由
           path: '',
           component: Home
 
@@ -63,7 +64,8 @@ const router = createRouter({
           component: Member,
           children:[
             {
-              path: 'user',
+              //默认三级路由
+              path: '',
               component: UserInfo
             },
             {
